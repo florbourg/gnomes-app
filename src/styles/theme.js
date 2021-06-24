@@ -11,8 +11,7 @@ import {
 } from 'styled-components'
 
 const breakpointValues = {
-  xs: 0,
-  xs1: 360,
+  xs: 320,
   sm: 600,
   md: 960,
   lg: 1280,
