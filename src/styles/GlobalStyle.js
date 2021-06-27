@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-import { normalize } from 'styled-normalize'
+import { createGlobalStyle } from "styled-components";
+import { normalize } from "styled-normalize";
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -12,8 +12,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     height: 100%;
     font-family: ${(props) => props.theme.fonts.primary.regular};
-    background-color: ${(props) => props.theme.colors.background} !important;
+    //background-color: ${(props) => props.theme.colors.background} !important;
   }
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

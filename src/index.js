@@ -5,11 +5,14 @@ import reportWebVitals from "./reportWebVitals";
 import GlobalStyle from "./styles/GlobalStyle";
 import { ThemeProvider } from "./styles/theme";
 
+import configureStore from "./redux/store";
+const store = configureStore();
+
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
       <GlobalStyle />
-      <App />
+      <App store={store} />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

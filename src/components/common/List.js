@@ -12,7 +12,7 @@ export default function InteractiveList({ items, title }) {
     <List>
       {title}
       {items.map((item) => (
-        <ListItem>
+        <ListItem key={item}>
           <ListItemIcon>
             <ArrowRightAltOutlinedIcon />
           </ListItemIcon>
