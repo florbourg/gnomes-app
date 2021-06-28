@@ -5,12 +5,19 @@ import styled from "styled-components";
 
 import { gnomesResults, gnomeById } from "../redux/selectors";
 import { searchGnomes, searchById } from "../redux/actions/search.actions";
+import CardGnome from "../components/home/CardGnome";
+import FloatingButton from "../components/common/FloatingButton";
+import Container from "../components/common/Container";
 
-function ProfilePage({ match }) {
+function ProfilePage({ match, history }) {
   const dispatch = useDispatch();
   const gnomesList = useSelector((state) => gnomesResults(state));
   const gnomeSelected = useSelector((state) => gnomeById(state));
   const { params } = match;
+
+  const handleReturn = () => {
+    history.push(`/gnomes`);
+  };
 
   useEffect(() => {
     if (!gnomesList) {
@@ -24,15 +31,16 @@ function ProfilePage({ match }) {
     }
   }, [params, gnomesList, dispatch]);
 
-  const renderResult = () => {
-    if (gnomeSelected) {
-      return gnomeSelected.map((value, index) => (
-        <p key={index}>ProfilePage id {value.name} </p>
-      ));
-    }
-  };
-
-  return <Root>{renderResult()}</Root>;
+  return (
+    <Root>
+      <FloatingButton handleClick={handleReturn} />
+      <Container>
+        {gnomeSelected?.map((value, index) => (
+          <CardGnome item={value} key={index} />
+        ))}
+      </Container>
+    </Root>
+  );
 }
 
 const Root = styled.div`
