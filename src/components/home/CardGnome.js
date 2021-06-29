@@ -21,7 +21,6 @@ const useStyles = makeStyles({
 
 export default function MediaCard({ item, setFriendSelected, handleClick }) {
   const classes = useStyles();
-
   return (
     <CardWrapper color={item.hair_color}>
       <HeaderCard>
@@ -60,10 +59,8 @@ export default function MediaCard({ item, setFriendSelected, handleClick }) {
       {item.friends[0] && (
         <Accordion title={<strong>FRIENDS</strong>}>
           {item.friends.map((friend) => (
-            <FriendsContainer>
-              <p key={friend} onClick={() => setFriendSelected(friend)}>
-                {friend}
-              </p>
+            <FriendsContainer key={friend}>
+              <p onClick={() => setFriendSelected(friend)}>{friend}</p>
             </FriendsContainer>
           ))}
         </Accordion>

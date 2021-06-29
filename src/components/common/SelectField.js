@@ -45,7 +45,9 @@ export default function NativeSelects({
       >
         <option value="all">All</option>
         {options?.map((option) => (
-          <option value={option}>{option}</option>
+          <option key={option} value={option}>
+            {option}
+          </option>
         ))}
       </NativeSelect>
     </FormControl>
@@ -55,8 +57,8 @@ export default function NativeSelects({
 NativeSelects.propTypes = {
   setFriendSelected: PropTypes.func,
   state: PropTypes.string.isRequired,
-  setstate: PropTypes.func.isRequired,
-  options: PropTypes.array,
+  setstate: PropTypes.func,
+  options: PropTypes.array.isRequired,
   title: PropTypes.string,
 };
 

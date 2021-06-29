@@ -30,8 +30,8 @@ export default function InteractiveList({ title, children }) {
 }
 
 InteractiveList.propTypes = {
-  title: PropTypes.string,
-  children: PropTypes.object,
+  title: PropTypes.object,
+  children: PropTypes.array,
 };
 
 const AccordionWrapper = styled(Accordion)`

@@ -117,7 +117,7 @@ export const createFilters = (items) => {
   };
 };
 
-export const filter = (selected, setter, array, setIsLoading) => {
+export const filter = (selected, setter, array) => {
   setter(
     array?.filter((item) => {
       if (!isEmpty(selected.friend)) {
