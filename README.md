@@ -33,6 +33,7 @@ Versión deployada en [https://florbourg.com.ar/gnomes/](https://florbourg.com.a
 - [Redux-Saga](https://redux-saga.js.org/) - Redux side effect manager
 - [StyledComponents](https://styled-components.com/) - Manejador de estilos
 - [MaterialUI](https://material-ui.com/) - Componentes de React comunes
+- [Lodash](https://lodash.com/) - JS librería de utilidades
 
 ## DevTools
 
