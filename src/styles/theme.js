@@ -27,7 +27,7 @@ const theme = {
     white: "#fff",
     text: "#001226",
     textLight: "#66717d",
-    surface: "#f7f7f7",
+    surface: "#f9f9f9",
     surfaceDark: "#262626",
     link: "#0366db",
     linkDark: "#334151",
@@ -37,7 +37,7 @@ const theme = {
   },
   fonts: {
     primary: {
-      regular: "'Dosis', sans-serif",
+      regular: "'Poppins', sans-serif",
     },
     secondary: { regular: "'Lato', sans-serif" },
   },
@@ -46,8 +46,8 @@ const theme = {
 const muiTheme = createMuiTheme({
   typography: {
     fontFamily: theme.fonts.primary.regular,
-    fontSize: 15,
-    htmlFontSize: 15,
+    fontSize: 14,
+    htmlFontSize: 14,
   },
   palette: {
     primary: {
@@ -73,6 +73,10 @@ export const ThemeProvider = ({ children }) => {
         href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;500;700&family=Lato:wght@100;300;700&display=swap"
         rel="stylesheet"
       />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      ></link>
       <MuiThemeProvider theme={muiTheme}>
         <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
       </MuiThemeProvider>

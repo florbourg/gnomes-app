@@ -5,9 +5,9 @@ import styled from "styled-components";
 
 import { gnomesResults, gnomeById } from "../redux/selectors";
 import { searchGnomes, searchById } from "../redux/actions/search.actions";
-import CardGnome from "../components/home/CardGnome";
+import GnomeProfile from "../components/profile/GnomeProfile";
 import FloatingButton from "../components/common/FloatingButton";
-import Container from "../components/common/Container";
+import Nav from "../components/common/Nav";
 
 function ProfilePage({ match, history }) {
   const dispatch = useDispatch();
@@ -33,10 +33,11 @@ function ProfilePage({ match, history }) {
 
   return (
     <Root>
-      <FloatingButton handleClick={handleReturn} />
+      <Nav />
+      <FloatingButton handleClick={handleReturn} aria="back" />
       <Container>
         {gnomeSelected?.map((value, index) => (
-          <CardGnome item={value} key={index} />
+          <GnomeProfile item={value} key={index} />
         ))}
       </Container>
     </Root>
@@ -45,6 +46,15 @@ function ProfilePage({ match, history }) {
 
 const Root = styled.div`
   width: 100%;
+`;
+
+const Container = styled.div`
+  margin: auto;
+  width: 100%;
+
+  ${(props) => props.theme.mui.breakpoints.up("md")} {
+    width: 70%;
+  }
 `;
 
 export default ProfilePage;

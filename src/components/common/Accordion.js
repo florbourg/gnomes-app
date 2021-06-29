@@ -1,29 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 import Accordion from "@material-ui/core/Accordion";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 export default function InteractiveList({ title, children }) {
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
   return (
-    <Accordion
-      expanded={expanded === "panel4"}
-      onChange={handleChange("panel4")}
+    <AccordionWrapper
+      expanded={expanded === "panel1"}
+      onChange={handleChange("panel1")}
     >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
-        aria-controls="panel4bh-content"
-        id="panel4bh-header"
+        aria-controls="panel1bh-content"
+        id="panel1bh-header"
       >
         <Typography>{title}</Typography>
       </AccordionSummary>
-      <AccordionDetails>{children}</AccordionDetails>
-    </Accordion>
+      {children}
+    </AccordionWrapper>
   );
 }
+
+InteractiveList.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.object,
+};
+
+const AccordionWrapper = styled(Accordion)`
+  box-shadow: none;
+
+  :before {
+    opacity: 0 !important;
+  }
+`;

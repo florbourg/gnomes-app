@@ -4,6 +4,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyle from "./styles/GlobalStyle";
 import { ThemeProvider } from "./styles/theme";
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
 
 import configureStore from "./redux/store";
 const store = configureStore();

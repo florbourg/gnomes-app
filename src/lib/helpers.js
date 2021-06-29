@@ -1,3 +1,5 @@
+import { isEmpty } from "lodash";
+
 const initialState = {
   population: [],
   age: {
@@ -113,4 +115,45 @@ export const createFilters = (items) => {
       idShowDetail,
     },
   };
+};
+
+export const filter = (selected, setter, array, setIsLoading) => {
+  setter(
+    array?.filter((item) => {
+      if (!isEmpty(selected.friend)) {
+        if (
+          (item.professions.includes(selected.profession) ||
+            selected.profession === "all") &&
+          (item.hair_color === selected.hairColor ||
+            selected.hairColor === "all") &&
+          item.friends.includes(selected.friend) &&
+          item.age > selected.ageValue[0] &&
+          item.age < selected.ageValue[1] &&
+          item.height > selected.heightValue[0] &&
+          item.height < selected.heightValue[1] &&
+          item.weight > selected.weightValue[0] &&
+          item.weight < selected.weightValue[1]
+        ) {
+          return item;
+        }
+      } else {
+        if (
+          (item.professions.includes(selected.profession) ||
+            selected.profession === "all") &&
+          (item.hair_color === selected.hairColor ||
+            selected.hairColor === "all") &&
+          item.age > selected.ageValue[0] &&
+          item.age < selected.ageValue[1] &&
+          item.height > selected.heightValue[0] &&
+          item.height < selected.heightValue[1] &&
+          item.weight > selected.weightValue[0] &&
+          item.weight < selected.weightValue[1]
+        ) {
+          return item;
+        }
+      }
+
+      return false;
+    })
+  );
 };

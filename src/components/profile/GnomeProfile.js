@@ -8,8 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import styled from "styled-components";
-
-import Accordion from "../common/Accordion";
+import List from "../common/List";
 
 const useStyles = makeStyles({
   media: {
@@ -44,30 +43,34 @@ export default function MediaCard({ item, setFriendSelected, handleClick }) {
       <CardActions>
         <DetailsContainer>
           <Detail variant="body2" color="textSecondary" component="p">
-            <strong>Age</strong> {item.age}
+            <strong>AGE</strong> {item.age}
           </Detail>
           <Detail variant="body2" color="textSecondary" component="p">
-            <strong>Height</strong> {item.height.toFixed(2)}
+            <strong>HEIGHT</strong> {item.height.toFixed(1)}
           </Detail>
           <Detail variant="body2" color="textSecondary" component="p">
-            <strong>Weight</strong> {item.weight.toFixed(2)}
+            <strong>WEIGHT</strong> {item.weight.toFixed(1)}
           </Detail>
           <Detail variant="body2" color="textSecondary" component="p">
-            <strong>Hair Color</strong> {item.hair_color}
+            <strong>HAIR COLOR</strong> {item.hair_color}
           </Detail>
         </DetailsContainer>
       </CardActions>
-      {item.friends[0] && (
-        <Accordion title={<strong>FRIENDS</strong>}>
-          {item.friends.map((friend) => (
-            <FriendsContainer>
+      <CardActions>
+        {item.friends[0] && (
+          <div>
+            <strong>Friends</strong>
+            {item.friends.map((friend) => (
               <p key={friend} onClick={() => setFriendSelected(friend)}>
                 {friend}
               </p>
-            </FriendsContainer>
-          ))}
-        </Accordion>
-      )}
+            ))}
+          </div>
+        )}
+      </CardActions>
+      <CardActions>
+        <List items={item.professions} title={<strong>Professions</strong>} />
+      </CardActions>
     </CardWrapper>
   );
 }
@@ -90,6 +93,9 @@ const Detail = styled(Typography)`
   border-radius: 4px;
   padding: 5px 15px;
   font-size: 12px;
+  ${(props) => props.theme.mui.breakpoints.up("md")} {
+    font-size: 14px;
+  }
   margin: 5px;
 `;
 
@@ -102,14 +108,14 @@ const DetailsContainer = styled.div`
 
 const CardWrapper = styled(Card)`
   background-color: #fff;
-  max-width: 300px;
   margin: 25px 10px;
-  padding: 35px 30px 25px;
+  padding: 35px 30px 5px;
   box-sizing: content-box;
-  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
   border-radius: 6px;
   border-left: 3px solid
     ${(props) => (props.color ? props.color : "transparent")};
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 `;
 
 const HeaderCard = styled(CardActionArea)`
@@ -117,12 +123,10 @@ const HeaderCard = styled(CardActionArea)`
   justify-content: space-around;
   margin: 20px 10px 30px;
   text-align: left;
-`;
-
-const FriendsContainer = styled.div`
-  width: 100%;
-  text-align: left;
-  margin-left: 16px;
-  color: ${(props) => props.theme.colors.link};
-  cursor: pointer;
+  ${(props) => props.theme.mui.breakpoints.up("md")} {
+    justify-content: flex-start;
+    background-color: ${(props) => props.theme.colors.surface};
+    padding: 20px;
+    border-radius: 12px;
+  }
 `;

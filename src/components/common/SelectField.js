@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -37,11 +38,12 @@ export default function NativeSelects({
         value={state}
         onChange={handleChange}
         name="name"
+        color="primary"
         inputProps={{
           id: "name-native-error",
         }}
       >
-        <option value="all">all</option>
+        <option value="all">All</option>
         {options?.map((option) => (
           <option value={option}>{option}</option>
         ))}
@@ -49,3 +51,19 @@ export default function NativeSelects({
     </FormControl>
   );
 }
+
+NativeSelects.propTypes = {
+  setFriendSelected: PropTypes.func,
+  state: PropTypes.string.isRequired,
+  setstate: PropTypes.func.isRequired,
+  options: PropTypes.array,
+  title: PropTypes.string,
+};
+
+NativeSelects.defaultProps = {
+  setFriendSelected: () => {},
+  state: "",
+  setState: () => {},
+  options: [],
+  title: "",
+};
